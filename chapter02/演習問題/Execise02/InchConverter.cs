@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 namespace Execise02 {
     public static class InchConverter {
 
+        
+
         //定数
         private const double ratio = 0.0254;
 
