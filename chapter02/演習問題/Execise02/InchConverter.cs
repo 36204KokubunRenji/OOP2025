@@ -15,5 +15,10 @@ namespace Execise02 {
         public static double ToMeter(double inch) {
             return inch * ratio;
         }
+
+        public static double FromMeter(double meter) {
+            return meter / ratio;
+        }
+
     }
 }

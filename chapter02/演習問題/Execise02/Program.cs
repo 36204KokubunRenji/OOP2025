@@ -19,18 +19,20 @@ namespace Execise02 {
             } else {
                 Console.WriteLine("エラー");
             }
+
                 static void PrintInchToMeterList(int start, int end) {
-                    for (int inch = 1; inch <= 10; inch++) {
+                    for (int inch = start; inch <= end; inch++) {
                         double meter = InchConverter.ToMeter(inch);
                         Console.WriteLine($"{inch}ft = {meter:0.0000}m");
                     }
-
-                    static void PrintMeterToInchList(int start, int end) {
-                        for (int meter = 1; meter <= 10; meter++) {
-                            double inch = InchConverter.ToMeter(meter);
-                            Console.WriteLine($"{meter}ft = {inch:0.0000}m");
-                        }
-                    }
                 }
+
+                static void PrintMeterToInchList(int start, int end) {
+                     for (int meter = start; meter <= end; meter++) {
+                         double inch = InchConverter.FromMeter(meter);
+                         Console.WriteLine($"{meter}ft = {inch:0.0000}m");
+                     }
+                }
+        }
     }
 }
