@@ -42,7 +42,8 @@ namespace Excise01 {
         }
 
         private static void Exercise4(List<int> numbers) {
-            
+            numbers.Select(s => s * 2).ToList().ForEach(Console.WriteLine);
+
         }
     }
 }
