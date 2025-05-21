@@ -35,7 +35,10 @@ namespace Excise01 {
                 }
 
         private static void Exercise3(List<int> numbers) {
-            
+            var selected = numbers.Where(s => s >= 50);
+            foreach (var s in selected) {
+                Console.WriteLine(s);
+            }
         }
 
         private static void Exercise4(List<int> numbers) {
