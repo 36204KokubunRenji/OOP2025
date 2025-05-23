@@ -41,7 +41,11 @@ namespace Exercise01 {
         }
 
         private static void Exercise3(List<string> langs) {
-            throw new NotImplementedException();
+            var lang = langs.Find(s => s.Length == 11);
+            if(lang is null) {
+                Console.WriteLine("Unknown");
+            } else { Console.WriteLine(lang);
+                    }
         }
     }
 }
