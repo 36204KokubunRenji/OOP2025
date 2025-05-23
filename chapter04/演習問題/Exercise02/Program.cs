@@ -39,15 +39,36 @@ namespace Exercise02 {
             if (int.TryParse(converter, out var num)) {
                 switch (num) {
                     case > 500:
+                        Console.WriteLine(num * 3);
+                        break;
+                    case > 100:
+                        Console.WriteLine(num * 2);
+                        break;
+                    case < 0:
                         Console.WriteLine(num);
                         break;
-                    case > :
+                    default:
+                        Console.WriteLine(num);
+                        break;
                 }
+            }else {
+                Console.WriteLine("入力値に誤りがあります");
             }
         }
 
         private static void Exercise3() {
-            throw new NotImplementedException();
+            var converter = Console.ReadLine();
+            if (int.TryParse(converter, out var num)) {
+                var text = num switch {
+                    < 0 => num,
+                    < 100 => num * 2,
+                    < 500 => num * 3,
+                    => num
+                };
+                Console.WriteLine(text);
+            } else {
+                Console.WriteLine("入力値に誤りがあります");
+            }
         }
     }
 }
