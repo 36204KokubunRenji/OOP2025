@@ -41,11 +41,13 @@ namespace Exercise01 {
         }
 
         private static void Exercise3(List<string> langs) {
-            var lang = langs.Find(s => s.Length == 11);
+            var lang = langs.Find(s => s.Length == 10);
             if(lang is null) {
                 Console.WriteLine("Unknown");
             } else { Console.WriteLine(lang);
-                    }
+
+             Console.WriteLine(langs.Find(s => s.Length == 10) ?? "Unknown");
+            }
         }
     }
 }
