@@ -15,11 +15,29 @@ namespace Exercise01 {
         }
 
         private static void Exercise1(List<string> langs) {
-            throw new NotImplementedException();
+            for (int i = 0; i < langs.Count; i++) {
+                if (langs[i].Contains('S')) 
+                Console.WriteLine(langs[i]);                    
+            }
+
+            foreach (var lang in langs) {
+                if (lang.Contains('S'))
+                Console.WriteLine(lang);
+            }
+
+            int index = 0;
+            while (index < langs.Count) {
+                if (langs[index].Contains('S'))
+                    Console.WriteLine(langs[index]);
+                index++;
+            }
         }
 
         private static void Exercise2(List<string> langs) {
-            throw new NotImplementedException();
+            var lang = langs.Where(s => s.Contains('S'));
+            foreach (var s in lang) {
+                Console.WriteLine(s);
+            }
         }
 
         private static void Exercise3(List<string> langs) {
