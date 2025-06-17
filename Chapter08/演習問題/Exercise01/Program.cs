@@ -15,28 +15,33 @@ namespace Exercise01 {
             var dict = new Dictionary<Char, int>();
 
             foreach (var c in text.ToUpper()) {
-                // 'A' … 0x41
-                //  :       :
-                // 'Z' … 0x5a
-
-
-
-                //④アルファベットならディクショナリに登録
-                //  登録済み：valueをインクリメント
-                //  未登録：valueに1を設定
-
-
+                if ('A' <= c && c <= 'Z') {
+                    if (dict.ContainsKey(c))
+                        dict[c]++;
+                    else
+                        dict[c] = 1;
+                }
             }
-
-
-
-
-            //⑥すべての文字が読み終わったら、アルファベット順に並び替えて出力
+            foreach (var item in dict.OrderBy(x => x.Key)) {
+                Console.WriteLine("{0}:{1}", item.Key, item.Value);
+            }
 
         }
 
         private static void Exercise2(string text) {
-            
+            var dict = new SortedDictionary<Char, int>();
+
+            foreach (var c in text.ToUpper()) {
+                if ('A' <= c && c <= 'Z') {
+                    if (dict.ContainsKey(c))
+                        dict[c]++;
+                    else
+                        dict[c] = 1;
+                }
+            }
+            foreach (var item in dict) {
+                Console.WriteLine("{0}:{1}", item.Key, item.Value);
+            }
         }
     }
 }
