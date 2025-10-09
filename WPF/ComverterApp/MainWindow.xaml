@@ -11,9 +11,10 @@
             <TextBox  Name="MetricValue" Margin="4" Width="100" />
             <ComboBox  Name="MetricUnit" Margin="4" Width="80" />
         </StackPanel>
-        <Button Name="ImperialUnitToMetric" Margin="4" Width="40" Content="▲" />
-        <Button Name="MetricToImperialUnit" Margin="4" Width="40" Content="▼" />
-            <StackPanel Orientation="Horizontal">
+        
+        <StackPanel Orientation="Horizontal">
+            <Button Name="ImperialUnitToMetric" Margin="4" Width="40" Content="▲" />
+            <Button Name="MetricToImperialUnit" Margin="4" Width="40" Content="▼" />
         </StackPanel>
         
         <StackPanel Orientation="Horizontal">
