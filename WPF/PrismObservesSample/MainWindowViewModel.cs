@@ -9,25 +9,37 @@ namespace PrismObservesSample {
         private string _input1 = "";
         public string Input1 {
             get =>_input1;
-            set;
+            set => SetProperty(ref _input1, value);
         }
 
         private string _input2 = "";
         public string Input2 {
             get => _input2;
-            set;
+            set => SetProperty(ref _input2, value);
         }
         
         private string _result = "";
         public string Result {
             get => _result;
-            set;
+            set => SetProperty(ref _result, value);
         }
+
+        public DelegateCommand SumCommand { get; }
+
         //コンストラクタ
         public MainWindowViewModel() {
-            SumCommand = 
+            SumCommand = new DelegateCommand(ExcuteSum, canExecuteSum)
+                .ObservesProperty(() => Input1)
+                .ObservesProperty(() => Input2);
         }
-        public DelegateCommand SumCommand { get; }
+        
+        private void ExcuteSum() {
+            Result = (int.Parse(Input1) + int.Parse(Input2)).ToString();
+        }
+
+        private bool canExecuteSum() {
+            return (int.TryParse(Input1, out _) && int.TryParse(Input2, out _));
+        }
 
     }
 }

@@ -46,7 +46,7 @@ namespace SampleUnitConverter {
             ImperialUnitToMetric = new DelegateCommand(
                 () => MetricValue =
                     CurrentMetricUnit.FromImperialUnit(CurrentImperialUnit, ImperialValue));
-
+            
             MetricToImperialunit = new DelegateCommand(
                 () => imperialValue =
                         CurrentImperialUnit.FromMetricUnit(CurrentMetricUnit, MetricValue));
