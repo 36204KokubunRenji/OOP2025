@@ -45,7 +45,7 @@ public partial class MainWindow : Window{
         }
     }
 
-    private void UpdataButton_Click(object sender, RoutedEventArgs e) {
+    private void UpdateButton_Click(object sender, RoutedEventArgs e) {
         ReadDatabase();
         CustomerListView.ItemsSource = _customer;
     }
@@ -56,5 +56,30 @@ public partial class MainWindow : Window{
             MessageBox.Show("行を選択してください");
             return;
         }
+        using (var connection = new SQLiteConnection(App.databasePath)) {
+            connection.CreateTable<Customer>();
+            connection.Delete(item);    //データベースから選択されているレコードの削除
+            ReadDatabase();
+            CustomerListView.ItemsSource = _customer;
+        }
+    }
+    private void PersonListView_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+        var selectedCustomer = CustomerListView.SelectedItem as Customer;
+        if (selectedCustomer is null) return;
+        NameTextBox.Text = selectedCustomer.Name;
+        PhoneTextBox.Text = selectedCustomer.Phone;
+        AddressTextBox.Text = selectedCustomer.Address;
+    }
+
+    private void FilterBox_TextChanged(object sender, TextChangedEventArgs e) {
+        string filterText = FilterBox.Text.ToLower();
+
+        var filteredList = _customer.Where(c =>
+            (!string.IsNullOrEmpty(c.Name) && c.Name.ToLower().Contains(filterText)) ||
+            (!string.IsNullOrEmpty(c.Phone) && c.Phone.ToLower().Contains(filterText)) ||
+            (!string.IsNullOrEmpty(c.Address) && c.Address.ToLower().Contains(filterText))
+        ).ToList();
+
+        CustomerListView.ItemsSource = filteredList;
     }
 }

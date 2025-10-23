@@ -25,7 +25,7 @@ namespace CustomerApp.Data{
         /// <summary>
         /// 画像
         /// </summary>
-        public byte Picture { get; set; }
+        public byte[] Picture { get; set; }
 
         public override string ToString() {
             return $"{Id}{Name}{Phone}{Address}{Picture}";
