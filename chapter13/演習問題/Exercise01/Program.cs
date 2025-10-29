@@ -51,7 +51,17 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_6() {
-            var groups = Library.Categories.GroupJoin(Library.Books, e => e.Id, f => f.CategoryId, (c, books) => new { Category = c.Name, Books = books });
+            //var groups = Library.Categories.GroupJoin(Library.Books, e => e.Id, f => f.CategoryId, (c, books) => new { Category = c.Name, Books = books });
+            //foreach (var group in groups) {
+              //  Console.WriteLine($"# {group.Category}");
+                //foreach (var book in group.Books) {
+                  //  Console.WriteLine($"{book.Title} ({book.PublishedYear}年)");
+               // }
+            //}
+            var groups = Library.Books.GroupBy(book => book.CategoryId)
+                .Select(g => new { Category = Library.Categories.FirstOrDefault(c => c.Id == g.Key),Books = g});
+              //.Select(g => new { Category = Library.Categories.FirstOrDefault(c => c.Id == g.Key)?.Name ?? "Unknown", Books = g });
+
             foreach (var group in groups) {
                 Console.WriteLine($"# {group.Category}");
                 foreach (var book in group.Books) {
@@ -61,11 +71,11 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_7() {
-        
+            
         }
 
         private static void Exercise1_8() {
-            
+
         }
     }
 }
