@@ -38,6 +38,7 @@ public partial class MainWindow : Window{
             Name = NameTextBox.Text,
             Phone = PhoneTextBox.Text,
             Address = AddressTextBox.Text
+            
         };
         using (var connection = new SQLiteConnection(App.databasePath)) {
             connection.CreateTable<Customer>();
@@ -63,7 +64,7 @@ public partial class MainWindow : Window{
             CustomerListView.ItemsSource = _customer;
         }
     }
-    private void PersonListView_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+    private void CustomerListView_SelectionChanged(object sender, SelectionChangedEventArgs e) {
         var selectedCustomer = CustomerListView.SelectedItem as Customer;
         if (selectedCustomer is null) return;
         NameTextBox.Text = selectedCustomer.Name;
@@ -81,5 +82,9 @@ public partial class MainWindow : Window{
         ).ToList();
 
         CustomerListView.ItemsSource = filteredList;
+    }
+
+    private void ImageButton_Click(object sender, RoutedEventArgs e) {
+
     }
 }

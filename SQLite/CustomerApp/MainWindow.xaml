@@ -24,14 +24,14 @@
             <TextBox x:Name="AddressTextBox" Height="20" Width="400"/>
 
             <StackPanel Margin="0,5,0,10" Orientation="Horizontal" Height="45">
-                <Button Content="新規登録" x:Name="SaveButton" Click="SaveButton_Click" Width="60" Height="28"/>
-                <Button Content="更新" x:Name="UpdateButton" Click="UpdateButton_Click" Margin="10,0,0,0" Width="60" Height="28"/>
-                <Button Content="削除" x:Name="deleteButton" Click="deleteButton_Click" Margin="10,0,0,0" Width="60" Height="28"/>
+                <Button Content="新規登録" x:Name="SaveButton" Click="SaveButton_Click" Width="60" Height="30"/>
+                <Button Content="更新" x:Name="UpdateButton" Click="UpdateButton_Click" Margin="10,0,0,0" Width="60" Height="30"/>
+                <Button Content="削除" x:Name="deleteButton" Click="deleteButton_Click" Margin="10,0,0,0" Width="60" Height="30"/>
+                <Button Content="画像" x:Name="ImageButton" Click="ImageButton_Click" Margin="10,0,0,0" Width="60" Height="30"/>
             </StackPanel>
 
             <Grid>
                 <TextBox x:Name="FilterBox" Width="400" Height="20" VerticalAlignment="Top" TextChanged="FilterBox_TextChanged"/>
-                <DataGrid x:Name="UserGrid" AutoGenerateColumns="True" Margin="0,35,0,0" />
             </Grid>
         </StackPanel>
 
@@ -43,6 +43,7 @@
                         <TextBlock Text="{Binding Name}" FontSize="20" />
                         <TextBlock Text="{Binding Phone}"/>
                         <TextBlock Text="{Binding Address}" Foreground="Green"/>
+                        <Image Source="{Binding Picture}" Width="50" Height="50"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
