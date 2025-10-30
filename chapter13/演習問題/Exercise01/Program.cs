@@ -1,4 +1,6 @@
 ﻿
+using System.Text.RegularExpressions;
+
 namespace Exercise01 {
     internal class Program {
         static void Main(string[] args) {
@@ -59,8 +61,8 @@ namespace Exercise01 {
                // }
             //}
             var groups = Library.Books.GroupBy(book => book.CategoryId)
-                .Select(g => new { Category = Library.Categories.FirstOrDefault(c => c.Id == g.Key),Books = g});
-              //.Select(g => new { Category = Library.Categories.FirstOrDefault(c => c.Id == g.Key)?.Name ?? "Unknown", Books = g });
+                .Select(g => new { Category = Library.Categories.FirstOrDefault(h => h.Id == g.Key).Name,Books = g});
+              //.Select(g => new { Category = Library.Categories.FirstOrDefault(h => h.Id == g.Key)?.Name ?? "Unknown", Books = g });
 
             foreach (var group in groups) {
                 Console.WriteLine($"# {group.Category}");
@@ -71,11 +73,26 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_7() {
-            
+            var groups = Library.Categories.Where(i => i.Name.Equals("Development"))
+                .Join(Library.Books, c => c.Id, b => b.CategoryId, (c, b) => new { b.Title, b.PublishedYear }).GroupBy(x => x.PublishedYear).OrderBy(x => x.Key);
+            foreach (var group in groups) {
+                Console.WriteLine($"# {group.Key}");
+                foreach (var book in group) {
+                    Console.WriteLine($"{book.Title}");
+                }
+            }
         }
 
         private static void Exercise1_8() {
+            var groups = Library.Categories.GroupJoin(Library.Books, c => c.Id, b => b.CategoryId, (c, books) => new { Category = c.Name, Books = books })
+                .Where(g => g.Books.Count() >= 4);
 
+            foreach (var group in groups) {
+                Console.WriteLine($"# {group.Category} ({group.Books.Count()})");
+                foreach (var book in group.Books) {
+                    Console.WriteLine($"{book.Title}");
+                }
+            }
         }
     }
 }
