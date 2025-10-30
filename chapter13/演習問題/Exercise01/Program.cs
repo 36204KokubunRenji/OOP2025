@@ -89,9 +89,7 @@ namespace Exercise01 {
 
             foreach (var group in groups) {
                 Console.WriteLine($"# {group.Category} ({group.Books.Count()})");
-                foreach (var book in group.Books) {
-                    Console.WriteLine($"{book.Title}");
-                }
+             
             }
         }
     }
