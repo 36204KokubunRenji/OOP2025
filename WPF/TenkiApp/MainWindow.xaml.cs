@@ -1,21 +1,31 @@
-﻿using System.Text;
+﻿using System.Net.Http;
+using System.Text.Json;
+using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace TenkiApp {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window {
+        private readonly LocationService locationService = new();
+        private readonly WeatherService weatherService = new();
+
         public MainWindow() {
             InitializeComponent();
+        }
+
+        private async void GetWeatherButton_Click(object sender, RoutedEventArgs e) {
+            LoadingProgress.Visibility = Visibility.Visible;
+            WeatherResult.Text = "";
+
+            var location = await locationService.GetLocationAsync();
+            if (location == null) {
+                WeatherResult.Text = "位置情報の取得に失敗しました。";
+                LoadingProgress.Visibility = Visibility.Collapsed;
+                return;
+            }
+
+            string weather = await weatherService.GetWeatherDetailsAsync(location.RegionCode);
+            WeatherResult.Text = $"{location.City} の天気\n{weather}";
+            LoadingProgress.Visibility = Visibility.Collapsed;
         }
     }
 }
