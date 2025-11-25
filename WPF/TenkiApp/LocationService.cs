@@ -1,25 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
+﻿using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace TenkiApp
-{
+namespace TenkiApp {
     public class LocationService {
         public async Task<LocationInfo?> GetLocationAsync() {
-            string url = "https://ipinfo.io/json";
-
-            using HttpClient client = new HttpClient();
+            using HttpClient client = new();
             try {
-                var json = await client.GetStringAsync(url);
+                var json = await client.GetStringAsync("https://ipinfo.io/json");
                 var doc = JsonDocument.Parse(json);
-                var city = doc.RootElement.GetProperty("city").GetString();
-                var region = doc.RootElement.GetProperty("region").GetString();
-                string jmaCode = WeatherService.GetJmaCode(region);
-                return new LocationInfo(city, region, jmaCode);
+
+                string city = doc.RootElement.GetProperty("city").GetString();
+                string region = doc.RootElement.GetProperty("region").GetString();
+
+                return new LocationInfo(city, region);
             }
             catch {
                 return null;
@@ -27,6 +21,5 @@ namespace TenkiApp
         }
     }
 
-    public record LocationInfo(string City, string Region, string RegionCode);
-
+    public record LocationInfo(string City, string Region);
 }
