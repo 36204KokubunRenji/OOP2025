@@ -20,6 +20,10 @@
             <TextBlock Text="電話番号" />
             <TextBox x:Name="PhoneTextBox" Height="20" Width="400"/>
 
+            <TextBlock Text="郵便番号"/>
+            <TextBox x:Name="PostCodeTextBox" Height="20"  Width="400"
+            TextChanged="ZipCodeTextBox_TextChanged"/>
+
             <TextBlock Text="住所"/>
             <TextBox x:Name="AddressTextBox" Height="20" Width="400"/>
 
@@ -42,6 +46,7 @@
                     <StackPanel>
                         <TextBlock Text="{Binding Name}" FontSize="20" />
                         <TextBlock Text="{Binding Phone}"/>
+                        <TextBlock Text="{Binding PostCode}" />
                         <TextBlock Text="{Binding Address}" Foreground="Green"/>
                         <Image Source="{Binding Picture}" Width="50" Height="50"/>
                     </StackPanel>

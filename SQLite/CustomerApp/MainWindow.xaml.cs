@@ -10,6 +10,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Net.Http;
+using System.Text.Json;
+
 
 namespace CustomerApp;
 
@@ -37,6 +40,7 @@ public partial class MainWindow : Window{
         var customer = new Customer() {
             Name = NameTextBox.Text,
             Phone = PhoneTextBox.Text,
+            PostCode = PostCodeTextBox.Text,
             Address = AddressTextBox.Text
             
         };
@@ -69,6 +73,7 @@ public partial class MainWindow : Window{
         if (selectedCustomer is null) return;
         NameTextBox.Text = selectedCustomer.Name;
         PhoneTextBox.Text = selectedCustomer.Phone;
+        PostCodeTextBox.Text = selectedCustomer.PostCode;
         AddressTextBox.Text = selectedCustomer.Address;
     }
 
@@ -87,4 +92,43 @@ public partial class MainWindow : Window{
     private void ImageButton_Click(object sender, RoutedEventArgs e) {
 
     }
+
+    private async void PostCodeTextBox_TextChanged(object sender, TextChangedEventArgs e)
+    {
+
+        var zip = PostCodeTextBox.Text.Replace("-", "");
+
+        // 7桁になったら検索
+        if (zip.Length != 7 || !zip.All(char.IsDigit))
+            return;
+
+        try
+        {
+            using var client = new HttpClient();
+            var url = $"https://zipcloud.ibsnet.co.jp/api/search?zipcode={zip}";
+            var json = await client.GetStringAsync(url);
+
+            using var doc = JsonDocument.Parse(json);
+            var root = doc.RootElement;
+
+            if (root.GetProperty("status").GetInt32() != 200)
+                return;
+
+            var results = root.GetProperty("results");
+            if (results.GetArrayLength() == 0)
+                return;
+
+            var r = results[0];
+
+            AddressTextBox.Text =
+                r.GetProperty("address1").GetString() +
+                r.GetProperty("address2").GetString() +
+                r.GetProperty("address3").GetString();
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("住所の取得に失敗しました\n" + ex.Message);
+        }
+    }
+
 }

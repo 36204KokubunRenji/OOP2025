@@ -26,9 +26,13 @@ namespace CustomerApp.Data{
         /// 画像
         /// </summary>
         public byte[] Picture { get; set; }
+        /// <summary>
+        /// 郵便番号
+        /// </summary>
+        public string PostCode { get; set; } = string.Empty;
 
         public override string ToString() {
-            return $"{Id}{Name}{Phone}{Address}{Picture}";
+            return $"{Id}{Name}{Phone}{Address}{Picture}{PostCode}";
         }
     }
 }

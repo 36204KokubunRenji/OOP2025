@@ -12,6 +12,8 @@ namespace Exercise01 {
             }
 
             TextProcessor.Run<Processor>(filePath, null);
+            Console.WriteLine("CurrentDirectory: " + Environment.CurrentDirectory);
+
         }
     }
 }

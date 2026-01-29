@@ -15,7 +15,7 @@
                 Margin="10">
             <StackPanel>
                 <TextBlock Name="WeatherResult"
-                           Text="ここに今日の天気が表示されます"
+                           Text="今日の天気"
                            FontSize="18"
                            HorizontalAlignment="Center"
                            TextAlignment="Center"

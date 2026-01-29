@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.13.35825.156
+# Visual Studio Version 18
+VisualStudioVersion = 18.2.11415.280 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "chapter01", "chapter01", "{DDB4EF12-CC4E-5E88-E6FC-71A802F4DE97}"
 EndProject
@@ -199,7 +199,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextFileProcessor", "chapte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LineCounter", "chapter15\TemplateMethod\LineCounter\LineCounter.csproj", "{35751282-1242-41D9-AE77-F41C60E9C265}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Strategy", "Strategy", "{94D689A6-66B3-413E-AFCB-3174A773ED97}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Strategy(問題15.2対応済)", "Strategy(問題15.2対応済)", "{94D689A6-66B3-413E-AFCB-3174A773ED97}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DistanceConverter", "chapter15\Strategy\DistanceConverter\DistanceConverter.csproj", "{D1DC6119-6366-4E91-A99B-2132A2F92CB3}"
 EndProject
@@ -214,6 +214,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApp", "WebAPI\WeatherApp\WeatherApp.csproj", "{34F1513B-CAAE-4D83-AE76-5EAC2BE650D8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TenkiApp", "WPF\TenkiApp\TenkiApp.csproj", "{C3FB0AE1-1AF5-41E0-95E3-98AC4D8CDA13}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GW2025_20", "GW2025_20", "{97CA1EE7-095B-4340-8708-C33FA8F9B917}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileWeaver", "GW2025_20\FileWeaver\FileWeaver.csproj", "{2133A8C9-86F8-43D5-96E4-9AC516295252}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -493,6 +497,10 @@ Global
 		{C3FB0AE1-1AF5-41E0-95E3-98AC4D8CDA13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3FB0AE1-1AF5-41E0-95E3-98AC4D8CDA13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3FB0AE1-1AF5-41E0-95E3-98AC4D8CDA13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2133A8C9-86F8-43D5-96E4-9AC516295252}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2133A8C9-86F8-43D5-96E4-9AC516295252}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2133A8C9-86F8-43D5-96E4-9AC516295252}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2133A8C9-86F8-43D5-96E4-9AC516295252}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -582,6 +590,7 @@ Global
 		{C6DB1A73-C240-4BB3-B95C-B15B12652ADA} = {A776A855-8758-4491-A8AE-E9A53C76487C}
 		{34F1513B-CAAE-4D83-AE76-5EAC2BE650D8} = {39289E84-79CB-4498-B824-F133A98F0693}
 		{C3FB0AE1-1AF5-41E0-95E3-98AC4D8CDA13} = {7DF9447F-CAE6-42AB-BEDD-E4B229360064}
+		{2133A8C9-86F8-43D5-96E4-9AC516295252} = {97CA1EE7-095B-4340-8708-C33FA8F9B917}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D78FB236-64E7-4397-8973-ED103DF8B997}
