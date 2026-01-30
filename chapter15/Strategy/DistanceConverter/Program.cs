@@ -8,6 +8,7 @@
             var converter = new DistanceConverter(from, to);
             var result = converter.Convert(distance);
             var text = $"{distance} {from.UnitName} は {result:0.000} {to.UnitName} です。/n";
+
             Console.WriteLine(text);
 
             static double GetDistance(ConverterBase from) {

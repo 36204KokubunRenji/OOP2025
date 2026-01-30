@@ -10,7 +10,6 @@ namespace Exercise01 {
                 Console.WriteLine("ファイルが見つかりません。正しいパスを入力してください。");
                 return;
             }
-
             TextProcessor.Run<Processor>(filePath, null);
             Console.WriteLine("CurrentDirectory: " + Environment.CurrentDirectory);
 

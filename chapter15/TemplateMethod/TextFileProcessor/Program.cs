@@ -17,6 +17,7 @@ namespace TextFileProcessor
             string word = Console.ReadLine();
 
             TextProcessor.Run<WordCountProcessor>(path, word);
+
         }
     }
 }

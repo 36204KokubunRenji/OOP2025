@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace TenkiApp {
     public class WeatherService {
-        // --- 天気コード → 絵文字アイコン ---
         public static string WeatherCodeToIcon(string code) {
             return code switch {
                 { } c when c.StartsWith("1") => "☀",
